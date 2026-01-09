@@ -1,0 +1,7 @@
+[MASTER]
+ignore=python-backend,archive,node_modules,.git
+ignore-patterns=crypto_portfolio_optimizer.py
+
+[MESSAGES CONTROL]
+disable=all
+

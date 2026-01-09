@@ -1,0 +1,601 @@
+{
+  "version": "1.0.0",
+  "mvpMode": true,
+  "description": "Unified data source registry for Smart Pay crypto analysis",
+  "sources": [
+    {
+      "id": "pyth",
+      "name": "Pyth Network",
+      "category": "price_oracle",
+      "why": "Sub-second prices with confidence intervals; excellent for real-time execution",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": true,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://hermes.pyth.network",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "binance",
+      "name": "Binance API",
+      "category": "exchange_market_data",
+      "why": "Liquidity & order book depth; high-volume exchange data",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": true,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.binance.com/api/v3",
+        "apiKeyEnvVar": "BINANCE_API_KEY",
+        "rateLimit": 1200,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase API",
+      "category": "exchange_market_data",
+      "why": "USD liquidity & settlement; payment-relevant pairs",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": true,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.coinbase.com/v2",
+        "apiKeyEnvVar": "COINBASE_API_KEY",
+        "rateLimit": 10000,
+        "rateLimitWindow": "1h"
+      }
+    },
+    {
+      "id": "coingecko",
+      "name": "CoinGecko API",
+      "category": "aggregated_market_data",
+      "why": "Broad crypto coverage; free tier available",
+      "costTier": "free_and_paid",
+      "enabled": true,
+      "roles": {
+        "core_pricing": true,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.coingecko.com/api/v3",
+        "apiKeyEnvVar": "COINGECKO_API_KEY",
+        "rateLimit": 30,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "kaiko",
+      "name": "Kaiko",
+      "category": "liquidity_microstructure",
+      "why": "Institutional slippage metrics; high-precision execution modeling",
+      "costTier": "paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://us.market-api.kaiko.io/v2",
+        "apiKeyEnvVar": "KAIKO_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "coinmetrics",
+      "name": "CoinMetrics",
+      "category": "volatility_risk",
+      "why": "Historical vol & drawdowns; calibration only (offline risk stats)",
+      "costTier": "paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.coinmetrics.io/v4",
+        "apiKeyEnvVar": "COINMETRICS_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "deribit",
+      "name": "Deribit",
+      "category": "options_derivatives",
+      "why": "Implied vol & tail risk; excellent CVaR proxy",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://www.deribit.com/api/v2",
+        "rateLimit": 20,
+        "rateLimitWindow": "1s"
+      }
+    },
+    {
+      "id": "coinglass",
+      "name": "Coinglass",
+      "category": "derivatives_analytics",
+      "why": "Funding rates, liquidations, open interest; tail-risk indicators",
+      "costTier": "free_and_paid",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://open-api.coinglass.com/public/v2",
+        "apiKeyEnvVar": "COINGLASS_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "glassnode",
+      "name": "Glassnode",
+      "category": "onchain_analytics",
+      "why": "Network health, flows; macro regime signal only",
+      "costTier": "paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.glassnode.com/v1",
+        "apiKeyEnvVar": "GLASSNODE_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "cryptoquant",
+      "name": "CryptoQuant",
+      "category": "onchain_flows",
+      "why": "Exchange inflow/outflow; avoid duplication w/ Glassnode",
+      "costTier": "paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.cryptoquant.com/v1",
+        "apiKeyEnvVar": "CRYPTOQUANT_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "etherscan",
+      "name": "Etherscan",
+      "category": "chain_explorer",
+      "why": "Ethereum fees & confirmation reliability; ground-truth execution data",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.etherscan.io/api",
+        "apiKeyEnvVar": "ETHERSCAN_API_KEY",
+        "rateLimit": 5,
+        "rateLimitWindow": "1s"
+      }
+    },
+    {
+      "id": "solscan",
+      "name": "Solscan",
+      "category": "chain_explorer",
+      "why": "Solana throughput & fees; required for Solana routing",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.solscan.io",
+        "apiKeyEnvVar": "SOLSCAN_API_KEY",
+        "rateLimit": 300,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "defillama",
+      "name": "DefiLlama",
+      "category": "stablecoin_defi",
+      "why": "Stablecoin liquidity & TVL; stablecoin safety",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://api.llama.fi",
+        "rateLimit": 300,
+        "rateLimitWindow": "5m"
+      }
+    },
+    {
+      "id": "l2beat",
+      "name": "L2Beat",
+      "category": "l2_analytics",
+      "why": "Rollup settlement risk; L2 safety gates",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://l2beat.com/api",
+        "rateLimit": 60,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "tokenunlocks",
+      "name": "TokenUnlocks",
+      "category": "tokenomics",
+      "why": "Supply shock risk; calendar-based exclusion",
+      "costTier": "free_and_paid",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.tokenunlocks.app",
+        "apiKeyEnvVar": "TOKENUNLOCKS_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "token_terminal",
+      "name": "Token Terminal",
+      "category": "tokenomics",
+      "why": "Protocol revenue, fees, fundamentals; quality filter",
+      "costTier": "free_and_paid",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.tokenterminal.com/v2",
+        "apiKeyEnvVar": "TOKEN_TERMINAL_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "nansen",
+      "name": "Nansen",
+      "category": "wallet_intelligence",
+      "why": "Whale activity; use sparingly (noise-prone)",
+      "costTier": "paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.nansen.ai",
+        "apiKeyEnvVar": "NANSEN_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "whale_alert",
+      "name": "Whale Alert",
+      "category": "whale_tracking",
+      "why": "Large transaction alerts; market impact signals",
+      "costTier": "free_and_paid",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.whale-alert.io/v1",
+        "apiKeyEnvVar": "WHALE_ALERT_API_KEY",
+        "rateLimit": 60,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "coinmarketcal",
+      "name": "CoinMarketCal",
+      "category": "events",
+      "why": "Protocol & macro events; context feature only",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": true,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.coinmarketcal.com/v1",
+        "apiKeyEnvVar": "COINMARKETCAL_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "cryptopanic",
+      "name": "CryptoPanic",
+      "category": "news_aggregation",
+      "why": "Breaking news; low-weight sentiment/event source",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://cryptopanic.com/api/v1",
+        "apiKeyEnvVar": "CRYPTOPANIC_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "lunarcrush",
+      "name": "LunarCrush",
+      "category": "social_sentiment",
+      "why": "Narrative momentum; optional behavioral context",
+      "costTier": "free_and_paid",
+      "enabled": false,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": true,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://api.lunarcrush.com/v2",
+        "apiKeyEnvVar": "LUNARCRUSH_API_KEY",
+        "rateLimit": 100,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "coindesk",
+      "name": "CoinDesk",
+      "category": "news_media",
+      "why": "Crypto news leader; breaking news and analysis",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://www.coindesk.com",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "reuters_crypto",
+      "name": "Reuters Crypto",
+      "category": "news_media",
+      "why": "Institutional-grade news; regulatory focus",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://www.reuters.com/technology/crypto",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "theblock",
+      "name": "The Block",
+      "category": "news_media",
+      "why": "Crypto research and news; data-driven reporting",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://www.theblock.co",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "decrypt",
+      "name": "Decrypt",
+      "category": "news_media",
+      "why": "Web3 and crypto news; community focus",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://decrypt.co",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "sec_crypto",
+      "name": "SEC Crypto Enforcement",
+      "category": "regulatory",
+      "why": "US securities enforcement; compliance requirements",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://www.sec.gov",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1s"
+      }
+    },
+    {
+      "id": "ofac_sanctions",
+      "name": "OFAC Sanctions List",
+      "category": "regulatory",
+      "why": "US sanctions compliance; hard block requirement",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": true
+      },
+      "config": {
+        "baseUrl": "https://sanctionslist.ofac.treas.gov",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "circle_status",
+      "name": "Circle Status",
+      "category": "stablecoin_issuer",
+      "why": "USDC issuer status; critical for stablecoin safety",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://www.circle.com/api/v1",
+        "rateLimit": 60,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "tether_transparency",
+      "name": "Tether Transparency",
+      "category": "stablecoin_issuer",
+      "why": "USDT reserves; depeg risk monitoring",
+      "costTier": "free",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": true,
+        "contextual_bandit": false,
+        "secondary_signal": false
+      },
+      "config": {
+        "baseUrl": "https://tether.to/en/transparency",
+        "scrapingEnabled": true,
+        "rateLimit": 10,
+        "rateLimitWindow": "1m"
+      }
+    },
+    {
+      "id": "internal_payment_logs",
+      "name": "Internal Payment Logs",
+      "category": "transaction_performance",
+      "why": "Success, latency, retries; primary bandit reward signal",
+      "costTier": "internal",
+      "enabled": true,
+      "roles": {
+        "core_pricing": false,
+        "pareto_constraints": false,
+        "contextual_bandit": true,
+        "secondary_signal": false
+      },
+      "config": {
+        "storageType": "database",
+        "tableName": "payment_logs"
+      }
+    }
+  ]
+}
+

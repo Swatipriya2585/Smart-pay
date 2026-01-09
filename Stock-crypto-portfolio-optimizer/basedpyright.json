@@ -1,0 +1,23 @@
+{
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/archive",
+    "**/python-backend",
+    "crypto_portfolio_optimizer.py",
+    "stock_chatgpt.py",
+    "hybrid_chatbot.py"
+  ],
+  "ignore": [
+    "**/archive/**",
+    "**/python-backend/**",
+    "**/*.py"
+  ],
+  "typeCheckingMode": "off",
+  "reportMissingImports": false,
+  "reportMissingTypeStubs": false,
+  "reportAttributeAccessIssue": false,
+  "reportCallIssue": false,
+  "reportArgumentType": false
+}
+

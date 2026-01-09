@@ -1,0 +1,707 @@
+{
+  "version": "1.0.0",
+  "description": "Crypto impact keywords for news and event classification",
+  "keywords": [
+    {
+      "term": "hack",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "hacked",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "exploit",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "breach",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "vulnerability",
+      "eventType": "exploit",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "attack",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "drain",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "rug pull",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "scam"]
+    },
+    {
+      "term": "scam",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "scam"]
+    },
+    {
+      "term": "phishing",
+      "eventType": "exploit",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["security", "scam"]
+    },
+    {
+      "term": "malware",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "private key",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "compromised",
+      "eventType": "exploit",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["security", "exploit"]
+    },
+    {
+      "term": "ban",
+      "eventType": "regulatory",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "sanctions",
+      "eventType": "regulatory",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "sec",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "cftc",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "lawsuit",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "charges",
+      "eventType": "regulatory",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "investigation",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "fine",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "regulation",
+      "eventType": "regulatory",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "regulatory",
+      "eventType": "regulatory",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "compliance",
+      "eventType": "regulatory",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "legal action",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "court ruling",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "ruling",
+      "eventType": "regulatory",
+      "severity": "medium",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "appeal",
+      "eventType": "regulatory",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "approval",
+      "eventType": "regulatory",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["regulatory", "legal"]
+    },
+    {
+      "term": "delisting",
+      "eventType": "delisting",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["exchange", "liquidity"]
+    },
+    {
+      "term": "listing",
+      "eventType": "listing",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["exchange", "liquidity"]
+    },
+    {
+      "term": "stablecoin depeg",
+      "eventType": "depeg",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["stablecoin", "liquidity"]
+    },
+    {
+      "term": "peg restored",
+      "eventType": "depeg",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["stablecoin", "liquidity"]
+    },
+    {
+      "term": "usdc",
+      "eventType": "stablecoin",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["stablecoin"]
+    },
+    {
+      "term": "usdt",
+      "eventType": "stablecoin",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["stablecoin"]
+    },
+    {
+      "term": "exchange outage",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["exchange", "infrastructure"]
+    },
+    {
+      "term": "withdrawal halt",
+      "eventType": "outage",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["exchange", "liquidity"]
+    },
+    {
+      "term": "withdrawal halted",
+      "eventType": "outage",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["exchange", "liquidity"]
+    },
+    {
+      "term": "suspension",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["exchange", "liquidity"]
+    },
+    {
+      "term": "network congestion",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["blockchain", "infrastructure"]
+    },
+    {
+      "term": "block delay",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["blockchain", "infrastructure"]
+    },
+    {
+      "term": "finality delay",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["blockchain", "infrastructure"]
+    },
+    {
+      "term": "transaction backlog",
+      "eventType": "outage",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["blockchain", "infrastructure"]
+    },
+    {
+      "term": "gas fee spike",
+      "eventType": "outage",
+      "severity": "low",
+      "impact": "negative",
+      "categories": ["blockchain", "infrastructure"]
+    },
+    {
+      "term": "bankruptcy",
+      "eventType": "insolvency",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["financial", "liquidity"]
+    },
+    {
+      "term": "insolvency",
+      "eventType": "insolvency",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["financial", "liquidity"]
+    },
+    {
+      "term": "liquidity crunch",
+      "eventType": "liquidity_crunch",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["financial", "liquidity"]
+    },
+    {
+      "term": "bank",
+      "eventType": "banking",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["financial", "institutional"]
+    },
+    {
+      "term": "custody issue",
+      "eventType": "custody",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["financial", "security"]
+    },
+    {
+      "term": "custodian",
+      "eventType": "custody",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["financial", "institutional"]
+    },
+    {
+      "term": "capital flight",
+      "eventType": "liquidity_crunch",
+      "severity": "high",
+      "impact": "negative",
+      "categories": ["financial", "liquidity"]
+    },
+    {
+      "term": "liquidation",
+      "eventType": "liquidation",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["derivatives", "volatility"]
+    },
+    {
+      "term": "long squeeze",
+      "eventType": "liquidation",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["derivatives", "volatility"]
+    },
+    {
+      "term": "short squeeze",
+      "eventType": "liquidation",
+      "severity": "medium",
+      "impact": "positive",
+      "categories": ["derivatives", "volatility"]
+    },
+    {
+      "term": "funding rate",
+      "eventType": "derivatives",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["derivatives", "market"]
+    },
+    {
+      "term": "open interest",
+      "eventType": "derivatives",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["derivatives", "market"]
+    },
+    {
+      "term": "volatility spike",
+      "eventType": "volatility",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["market", "volatility"]
+    },
+    {
+      "term": "volume spike",
+      "eventType": "volume",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["market", "liquidity"]
+    },
+    {
+      "term": "order book imbalance",
+      "eventType": "liquidity",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["market", "liquidity"]
+    },
+    {
+      "term": "order book",
+      "eventType": "liquidity",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["market", "liquidity"]
+    },
+    {
+      "term": "whale movement",
+      "eventType": "whale",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["market", "whale"]
+    },
+    {
+      "term": "large transfer",
+      "eventType": "whale",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["market", "whale"]
+    },
+    {
+      "term": "hard fork",
+      "eventType": "upgrade",
+      "severity": "medium",
+      "impact": "neutral",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "soft fork",
+      "eventType": "upgrade",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "upgrade",
+      "eventType": "upgrade",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "mainnet",
+      "eventType": "deployment",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "testnet",
+      "eventType": "deployment",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "deployment",
+      "eventType": "deployment",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "consensus",
+      "eventType": "protocol",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "scaling upgrade",
+      "eventType": "upgrade",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "throughput increase",
+      "eventType": "upgrade",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "layer 2",
+      "eventType": "protocol",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "rollup",
+      "eventType": "protocol",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    },
+    {
+      "term": "token burn",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "burn",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "mint",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "negative",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "unlock",
+      "eventType": "tokenomics",
+      "severity": "medium",
+      "impact": "negative",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "vesting",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "emission",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "negative",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "circulating supply",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "max supply",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "deflation",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "inflation",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "negative",
+      "categories": ["tokenomics", "supply"]
+    },
+    {
+      "term": "staking update",
+      "eventType": "tokenomics",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["tokenomics", "staking"]
+    },
+    {
+      "term": "proof of reserves",
+      "eventType": "transparency",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["financial", "transparency"]
+    },
+    {
+      "term": "etf",
+      "eventType": "institutional",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "spot etf",
+      "eventType": "institutional",
+      "severity": "medium",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "blackrock",
+      "eventType": "institutional",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "fidelity",
+      "eventType": "institutional",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "hedge fund",
+      "eventType": "institutional",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "institutional",
+      "eventType": "institutional",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["institutional", "adoption"]
+    },
+    {
+      "term": "enterprise",
+      "eventType": "adoption",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["adoption", "institutional"]
+    },
+    {
+      "term": "partnership",
+      "eventType": "adoption",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["adoption", "business"]
+    },
+    {
+      "term": "integration",
+      "eventType": "adoption",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["adoption", "business"]
+    },
+    {
+      "term": "payment provider",
+      "eventType": "adoption",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["adoption", "payments"]
+    },
+    {
+      "term": "adoption",
+      "eventType": "adoption",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["adoption", "growth"]
+    },
+    {
+      "term": "airdrop",
+      "eventType": "airdrop",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["tokenomics", "distribution"]
+    },
+    {
+      "term": "settlement",
+      "eventType": "settlement",
+      "severity": "low",
+      "impact": "neutral",
+      "categories": ["legal", "regulatory"]
+    },
+    {
+      "term": "risk-off",
+      "eventType": "market_sentiment",
+      "severity": "low",
+      "impact": "negative",
+      "categories": ["market", "sentiment"]
+    },
+    {
+      "term": "fee reduction",
+      "eventType": "protocol",
+      "severity": "low",
+      "impact": "positive",
+      "categories": ["blockchain", "protocol"]
+    }
+  ]
+}
+

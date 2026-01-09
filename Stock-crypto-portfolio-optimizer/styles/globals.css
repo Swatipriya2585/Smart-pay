@@ -1,0 +1,560 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 17, 24, 39;
+  --background-end-rgb: 0, 0, 0;
+  --primary-purple: 147, 51, 234;
+  --secondary-purple: 168, 85, 247;
+  --dark-purple: 88, 28, 135;
+  --light-purple: 196, 181, 253;
+  
+  /* Mobile App Colors */
+  --mobile-bg: #000000;
+  --mobile-card: #1a1a1a;
+  --mobile-card-hover: #2a2a2a;
+  --mobile-border: #333333;
+  --mobile-text-primary: #ffffff;
+  --mobile-text-secondary: #a0a0a0;
+  --mobile-accent: #8b5cf6;
+  --mobile-success: #10b981;
+  --mobile-warning: #f59e0b;
+  --mobile-error: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  color: var(--mobile-text-primary);
+  background: var(--mobile-bg);
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Force portrait orientation */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+  
+  /* Add bottom padding for mobile navigation */
+  .min-h-screen {
+    padding-bottom: 80px;
+  }
+}
+
+/* iOS and Android Specific Enhancements */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific styles */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  input, textarea, select {
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Android specific enhancements */
+@media screen and (max-width: 768px) {
+  /* Prevent zoom on input focus for Android */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="number"] {
+    font-size: 16px;
+  }
+  
+  /* Better touch targets for Android */
+  button, 
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mobile navigation spacing */
+.has-mobile-nav {
+  padding-bottom: 80px;
+}
+
+/* Mobile App Specific Styles */
+.mobile-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: var(--mobile-bg);
+}
+
+.mobile-header {
+  background: var(--mobile-bg);
+  border-bottom: 1px solid var(--mobile-border);
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.mobile-card {
+  background: var(--mobile-card);
+  border-radius: 16px;
+  border: 1px solid var(--mobile-border);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.mobile-button {
+  background: var(--mobile-accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.mobile-button:active {
+  transform: scale(0.98);
+  background: #7c3aed;
+}
+
+.mobile-button-secondary {
+  background: var(--mobile-card);
+  color: var(--mobile-text-primary);
+  border: 1px solid var(--mobile-border);
+}
+
+.mobile-input {
+  background: var(--mobile-card);
+  border: 1px solid var(--mobile-border);
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--mobile-text-primary);
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.mobile-input:focus {
+  outline: none;
+  border-color: var(--mobile-accent);
+}
+
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--mobile-card);
+  border-top: 1px solid var(--mobile-border);
+  padding: 8px 0;
+  z-index: 50;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  color: var(--mobile-text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-item.active {
+  color: var(--mobile-accent);
+}
+
+.mobile-nav-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.mobile-section {
+  padding: 20px;
+}
+
+.mobile-list-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--mobile-card);
+  border-bottom: 1px solid var(--mobile-border);
+  transition: background 0.2s ease;
+}
+
+.mobile-list-item:active {
+  background: var(--mobile-card-hover);
+}
+
+.mobile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background: var(--mobile-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  margin-right: 16px;
+}
+
+.mobile-badge {
+  background: var(--mobile-accent);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mobile-badge.success {
+  background: var(--mobile-success);
+}
+
+.mobile-badge.warning {
+  background: var(--mobile-warning);
+}
+
+.mobile-badge.error {
+  background: var(--mobile-error);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #525252;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.gradient-danger {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+/* Crypto-specific colors */
+.crypto-bitcoin {
+  background: linear-gradient(135deg, #f7931a 0%, #ff9500 100%);
+}
+
+.crypto-ethereum {
+  background: linear-gradient(135deg, #627eea 0%, #a091f8 100%);
+}
+
+.crypto-solana {
+  background: linear-gradient(135deg, #14f195 0%, #00d4aa 100%);
+}
+
+.crypto-usdc {
+  background: linear-gradient(135deg, #2775ca 0%, #5b9bd5 100%);
+}
+
+.crypto-usdt {
+  background: linear-gradient(135deg, #26a17b 0%, #4caf50 100%);
+}
+
+/* Card styles */
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-500 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+}
+
+.btn-success {
+  @apply bg-green-600 text-white hover:bg-green-700 focus:ring-green-500;
+}
+
+.btn-warning {
+  @apply bg-yellow-600 text-white hover:bg-yellow-700 focus:ring-yellow-500;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+/* Input styles */
+.input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.badge-danger {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+}
+
+.badge-info {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-primary-600;
+}
+
+/* Price change indicators */
+.price-up {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.price-down {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.price-neutral {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+/* Responsive text */
+.text-responsive {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl;
+}
+
+/* Grid layouts */
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Custom focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+}
+
+/* Wallet adapter customizations */
+.wallet-adapter-button {
+  @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.wallet-adapter-modal {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-2xl;
+}
+
+.wallet-adapter-modal-wrapper {
+  @apply bg-black bg-opacity-50 backdrop-blur-sm;
+}
+
+/* Chart container */
+.chart-container {
+  @apply relative w-full h-64 sm:h-80 md:h-96;
+}
+
+/* Transaction status indicators */
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.status-confirmed {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.status-failed {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+}
+
+.status-cancelled {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+}
+
+/* Risk level indicators */
+.risk-low {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.risk-medium {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.risk-high {
+  @apply bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200;
+}
+
+.risk-extreme {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+} 
